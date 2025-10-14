@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كلية الخدمة الاجتماعية - الخانكة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #1a3a6c;
+            --accent: #f8b739;
+            --light: #f5f7fa;
+            --dark: #1e2a3a;
+            --success: #28a745;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a3a6c 0%, #2c5aa0 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 5px solid var(--accent);
+        }
+
+        .logo img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-left: 10px;
+            color: var(--accent);
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        .btn-user {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .btn-admin {
+            background: linear-gradient(135deg, #f8b739 0%, #e6a022 100%);
+            color: var(--dark);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.4s;
+        }
+
+        .btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .links-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .links-title {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .links-title i {
+            margin-left: 10px;
+            color: var(--accent);
+        }
+
+        .link-container {
+            display: flex;
+            margin-bottom: 20px;
+            background: var(--light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-text {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 1rem;
+            color: var(--dark);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-btn:hover {
+            background: var(--secondary);
+        }
+
+        .copy-btn i {
+            margin-left: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification i {
+            margin-left: 10px;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(248, 183, 57, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(248, 183, 57, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(248, 183, 57, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo pulse">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgL_oR_dIOdypzWyVo5x9C0L4smVVHyWU6iRrajaL9frqGFyBjczvjfx-fe7fuGbxZbmdk7D-0darDYyypSKhzssUun7GT4hPmUfs6AMufR_BX1NGHmS-PvEX95Z77N4UzcjGg4SIDHJn8TuSsjHvzc_RlL1DegAmibk4LApd0uFXD81YG7141oA5_8qz3H/s1080/15536.jpg" alt="شعار كلية الخدمة الاجتماعية">
+                </div>
+            </div>
+            <h1 class="title">كلية الخدمة الاجتماعية</h1>
+            <p class="subtitle">الخانكة</p>
+            <p class="subtitle">DV:Moaz Mohamed Elgohary</p>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-graduation-cap"></i> بوابة الطلاب</h2>
+                <div class="buttons-container">
+                    <a href="https://social-service-1.github.io/com/" class="btn btn-user" target="_blank">
+                        <i class="fas fa-user"></i> الدخول كطالب
+                    </a>
+                  
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-user-shield"></i> بوابة الإدارة</h2>
+                <div class="buttons-container">
+                    <a href="https://social-service-1.github.io/admin123/" class="btn btn-admin" target="_blank">
+                        <i class="fas fa-cogs"></i> الدخول كمسؤول
+                    </a>
+                  
+                </div>
+            </div>
+        </div>
+
+        <div class="links-section">
+            <h2 class="links-title"><i class="fas fa-share-alt"></i> مشاركة الروابط</h2>
+            <div class="link-container">
+                <div class="link-text" id="user-link">https://social-service-1.github.io/com/</div>
+                <button class="copy-btn" onclick="copyToClipboard('user-link')">
+                    <i class="far fa-copy"></i> نسخ
+                </button>
+            </div>
+            <div class="link-container">
+                <div class="link-text" id="admin-link">https://social-service-1.github.io/admin123/</div>
+                <button class="copy-btn" onclick="copyToClipboard('admin-link')">
+                    <i class="far fa-copy"></i> نسخ
+                </button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>كلية الخدمة الاجتماعية - الخانكة &copy;  </p>
+             <p>جميع الحقوق محفوظة</p>
+             <h1>Moaz Mohamed Elgohary</h1>
+           
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> تم نسخ الرابط بنجاح
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            
+            // إنشاء عنصر نصي مؤقت
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            
+            // تحديد النص ونسخه
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // للهواتف المحمولة
+            document.execCommand("copy");
+            
+            // إزالة العنصر المؤقت
+            document.body.removeChild(tempInput);
+            
+            // إظهار الإشعار
+            const notification = document.getElementById("notification");
+            notification.classList.add("show");
+            
+            // إخفاء الإشعار بعد 3 ثوان
+            setTimeout(() => {
+                notification.classList.remove("show");
+            }, 3000);
+        }
+
+        // تأثيرات إضافية عند التمرير
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.card');
+            const windowHeight = window.innerHeight;
+            
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < windowHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // تهيئة تأثيرات الظهور الأولية
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.5s, transform 0.5s';
+                card.style.transitionDelay = `${index * 0.2}s`;
+            });
+            
+            // تشغيل تأثيرات الظهور بعد تحميل الصفحة
+            setTimeout(() => {
+                window.dispatchEvent(new Event('scroll'));
+            }, 300);
+        });
+    </script>
+</body>
+</html>
